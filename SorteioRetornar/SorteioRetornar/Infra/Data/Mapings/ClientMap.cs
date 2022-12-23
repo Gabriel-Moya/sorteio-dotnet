@@ -38,14 +38,6 @@ namespace SorteioRetornar.Infra.Data.Mapings
                 .HasColumnName("Email")
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(255);
-            
-            builder.Property(x => x.GeneratedNumber)
-                .IsRequired()
-                .HasColumnName("GeneratedNumber");
-
-            // Índices
-            builder.HasIndex(x => x.GeneratedNumber, "IX_Client_GeneratedNumber")
-                .IsUnique();
 
             builder.HasIndex(x => x.Email, "IX_Client_Email")
                 .IsUnique();

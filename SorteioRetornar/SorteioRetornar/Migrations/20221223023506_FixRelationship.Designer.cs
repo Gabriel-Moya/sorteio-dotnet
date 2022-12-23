@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SorteioRetornar.Infra.Data;
 
@@ -11,9 +12,10 @@ using SorteioRetornar.Infra.Data;
 namespace SorteioRetornar.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221223023506_FixRelationship")]
+    partial class FixRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,6 +42,9 @@ namespace SorteioRetornar.Migrations
                         .HasColumnType("VARCHAR(255)")
                         .HasColumnName("Email");
 
+                    b.Property<int>("GeneratedNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -55,6 +60,9 @@ namespace SorteioRetornar.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex(new[] { "Email" }, "IX_Client_Email")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "GeneratedNumber" }, "IX_Client_GeneratedNumber")
                         .IsUnique();
 
                     b.ToTable("Client", (string)null);
