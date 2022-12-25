@@ -17,10 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infra\CrossCutting\" />
-    <Folder Include="Presentation\Controllers\" />
     <Folder Include="Application\" />
-    <Folder Include="Presentation\" />
+    <Folder Include="Interfaces\Repository\" />
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
 </Project>
