@@ -9,10 +9,12 @@ namespace SorteioRetornar.Infra.Data
         public DataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Client> Client { get; set; }
+        public DbSet<GeneratedNumber> GeneratedNumbers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClientMap());
+            modelBuilder.ApplyConfiguration(new GeneratedNumberMap());
         }
     }
 }
