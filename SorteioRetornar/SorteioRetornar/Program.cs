@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SorteioRetornar.Infra.Data;
+using SorteioRetornar.Infra.Data.Repositories;
+using SorteioRetornar.Interfaces.Services;
+using SorteioRetornar.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureServices(builder);
@@ -30,4 +33,7 @@ void ConfigureServices(WebApplicationBuilder builder)
     {
         options.UseSqlServer(connectionString);
     });
+
+    builder.Services.AddScoped<IClientService, ClientService>();
+    builder.Services.AddScoped<IRepository, Repository>();
 }
